@@ -30,6 +30,14 @@ module.exports = (grunt) ->
         dest: 'lib/',
         ext: '.js'
 
+    coffeelint:
+      default:
+        src: [
+          'Gruntfile.coffee'
+          'src/**/*.coffee'
+          'test/**/*.coffee'
+        ]
+
     coffeecov:
       compile:
         src: 'src'
@@ -62,6 +70,7 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask "test", [
+    "coffeelint"
     "coffeecov"
     "mochaTest"
     "uploadCoverage"
