@@ -1,0 +1,78 @@
+#%RAML 0.8
+baseUri: https://api-foo.example.com
+title: Testable
+version: 0.1
+
+schemas:
+ - widget: !include widget.schema
+ - widgets: !include widget-list.schema
+
+resourceTypes:
+  - collection:
+      description: | 
+        The <<resourcePathName>> collection.
+      get:
+        description: Get a list of <<resourcePathName>>.
+        headers: &commonHeaders
+          accept: 
+            displayName: Accept
+            description: MIME types that client is willing to accept.
+            example: "application/json, text/javascript, */*"
+          content-type: 
+            displayName: Content Type
+            description: MIME type of document being served.
+            example: "application/x-www-form-urlencoded,application/json"
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  <<exampleCollection>>
+                schema: <<schema>>
+          500:
+            body:
+              application/json:
+                example: |
+                  {"message": "Internal server error" }
+  - collection-item:
+      description: | 
+        A member of the <<resourcePathName>> collection.
+      get:
+        description: |
+         GET shows an individual <<resourcePathName|!singularize>>
+        headers: *commonHeaders
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  <<exampleItem>>
+                schema: <<schema>>
+          404:
+            body:
+              application/json:
+                example: |
+                  {"message": "Record not found: Couldn't find requested <<resourcePathName|!singularize>>" }
+          500:
+            body:
+              application/json:
+                example: |
+                  {"message": "Internal server error" }
+/widgets:
+  type: 
+    collection: 
+      exampleCollection: !include widgets-get-collection.sample
+      schema: widgets
+  /{id}:
+    description: |
+      TBD.
+    uriParameters:
+      id:
+        description: |
+          TBD.
+        type: integer
+        example: 718
+    type:
+      collection-item: 
+        exampleItem: !include widgets-get-item.sample
+        schema: widget

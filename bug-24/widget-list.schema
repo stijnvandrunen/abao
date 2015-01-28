@@ -1,0 +1,17 @@
+{
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "title":"",
+  "description":"",
+  "type":"array",
+  "items": {
+        "type":"object",
+        "additionalProperties":false,
+        "required": ["elasticity","id","is_acute","name"],
+        "properties": {
+          "elasticity": {"type":"integer"},
+          "id": {"type":"integer"},
+          "is_acute": {"type":"boolean"},
+          "name": {"type":"string"}
+        }
+  }
+}

@@ -1,0 +1,27 @@
+[
+    {
+        "elasticity": 3,
+        "id": 782,
+        "is_acute": true,
+        "name": "A Bientot"
+    },
+
+    {
+        "elasticity": 1,
+        "id": 718,
+        "is_acute": true,
+        "name": "Da Svidanye"
+    },
+    {
+        "elasticity": 1,
+        "id": 790,
+        "is_acute": true,
+        "name": "Ta ta for now"
+    },
+    {
+        "elasticity": 4,
+        "id": 707,
+        "is_acute": true,
+        "name": "Hasta la proxima"
+    }
+]
