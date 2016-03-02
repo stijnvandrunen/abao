@@ -29,6 +29,7 @@ node_modules
 
 # Generated from CoffeeScript source
 lib/*.js
+lib/*.js.map
 tests/unit/*.js
 .idea/
 
